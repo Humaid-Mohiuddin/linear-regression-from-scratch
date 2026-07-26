@@ -1,0 +1,18 @@
+================================================================================
+THE FUNCTION TRAP:
+
+
+When I pass dummy_spendings data as argument to my training module, the array decays into a pointer
+which creates problems when I try to calculate the data_size/sample_size using:
+
+int sample_size = sizeof(spendings);
+
+what happens here is array variable "spendings" decays into a pointer. So when i say sizeof(spendings)
+what gets returned is the size of the pointer variable.
+
+This was proven using a debug print statement:
+
+printf("Size: %d\n", sample_size);
+
+even though my sample_size was supposed to be 5, it printed 8 which is the size of an integer pointer
+================================================================================
