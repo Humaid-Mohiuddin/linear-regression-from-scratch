@@ -1,7 +1,8 @@
 #ifndef TRAIN_H
 #define TRAIN_H
 #include "parameters.h"
+#include "data.h"
 
-int* train(int[], int[], int, Params *);
+int* train(Data, int, Params *, float);
 
 #endif

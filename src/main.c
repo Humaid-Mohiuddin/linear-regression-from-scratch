@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "parameters.h"
 #include "train.h"
+#include "data.h"
 
 /*
 The model for linear regression with only one dimensional feature
@@ -14,16 +15,21 @@ int main() {
     // Pointer to the array containing training outputs
     int* training_output;
 
+    Data data;
+
     // Dummy data for tessting train module
     int dummy_spendings[5] = {4, 5, 6, 7, 8};
     int dummy_sales[5] = {8, 7, 6, 5, 4};
+
+    data.X = dummy_spendings;
+    data.Y = dummy_sales;
+    data.sample_size = 5;
 
     // Using a type definition for parameter struct
     Params params = {0, 0}; // Initializing both parameters to 0
     Params *params_ptr = &params;
 
-    training_output = train(dummy_spendings, dummy_sales, 3, params_ptr);
-    printf("w = %d\nb = %d\n", params.w, params.b);
+    training_output = train(data, 5, params_ptr, 0.5);
 
     free(training_output);
 
